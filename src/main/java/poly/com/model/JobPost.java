@@ -20,11 +20,11 @@ public class JobPost extends AbstractEntity{
     @Column(name = "jobDescription")
     private String jobDescription;
 
-    @Column(name = "jobStatus")
-    private String jobStatus;
+    @Column(name = "quantity")
+    private Integer quantity;
 
-    @Column(name = "jobRequirement")
-    private String jobRequirement;
+    @Column(name = "jobRequire")
+    private String jobRequire;
 
     @Column(name = "salary")
     private float salary;
@@ -39,6 +39,21 @@ public class JobPost extends AbstractEntity{
 
     @Column(name = "status")
     private Boolean status;
+
+    @Column(name = "minSalary")
+    private float minSalary;
+
+    @Column(name = "maxSalary")
+    private float maxSalary;
+
+    @Column(name = "endDate")
+    private Date endDate;
+
+    @Column(name = "confirm")
+    private Boolean confirm;
+
+    @Column(name = "city")
+    private String city;
 
 
 
