@@ -1,8 +1,6 @@
 package poly.com.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,4 +18,9 @@ public class ServicePay extends AbstractEntity{
 
     @Column(name = "status")
     private Boolean Status;
+
+    @ManyToOne
+    @JoinColumn(name = "pay_id")
+    private Pay pay_id;
+
 }

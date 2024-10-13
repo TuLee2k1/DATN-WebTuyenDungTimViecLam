@@ -1,8 +1,6 @@
 package poly.com.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,4 +15,8 @@ import lombok.Setter;
 public class UserRole extends AbstractEntity{
     @Column(name = "role")
     private boolean role;
+
+    @OneToOne(orphanRemoval = true)
+    @JoinColumn(name = "id")
+    private User user_id;
 }

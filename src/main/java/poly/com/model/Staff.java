@@ -1,8 +1,6 @@
 package poly.com.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -31,4 +29,8 @@ public class Staff extends AbstractEntity{
 
     @Column(name = "dob")
     private Date dob;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user_id;
 }
