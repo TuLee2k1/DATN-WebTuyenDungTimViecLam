@@ -1,8 +1,6 @@
 package poly.com.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,9 +18,16 @@ public class Pay extends AbstractEntity{
     @Column(name = "amount")
     private Float amount;
 
+    @Temporal(TemporalType.DATE)
     @Column(name = "paymentDate")
     private Date paymentDate;
 
     @Column(name = "paymentType")
     private String paymentType;
+
+    @ManyToOne
+    @JoinColumn(name = "id")
+    private Company company_id;
 }
+
+

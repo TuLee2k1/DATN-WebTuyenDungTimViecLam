@@ -1,6 +1,8 @@
 package poly.com.model;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 import java.util.Date;
 
@@ -22,5 +24,11 @@ public class Profile extends AbstractEntity{
 
     @Column(name = "dateOfBirth")
     private Date dateOfBirth;
+
+    @ManyToOne
+    @JoinColumn(name = "id")
+    private User user_id;
+
+
 
 }
