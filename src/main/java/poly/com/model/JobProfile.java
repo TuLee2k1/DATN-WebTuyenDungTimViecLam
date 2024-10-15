@@ -12,8 +12,9 @@ import java.util.Date;
 @NoArgsConstructor
 @Setter
 @Getter
-@Table(name= "JobProfile")
-public class JobProfile extends AbstractEntity{
+@Table(name= "jobProfiles")
+public class JobProfile extends AbstractEntity {
+
     @Column(name = "fileCV")
     private String fileCV;
 
@@ -23,10 +24,10 @@ public class JobProfile extends AbstractEntity{
 
     @ManyToOne
     @JoinColumn(name = "job_id")
-    private JobPost job_id;
+    private JobPost job;
 
     @ManyToOne
     @JoinColumn(name = "profile_id")
-    private Profile profile_id;
+    private Profile profile;
 
 }
