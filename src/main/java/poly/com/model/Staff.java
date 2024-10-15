@@ -31,6 +31,6 @@ public class Staff extends AbstractEntity{
     private Date dob;
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "user_id")
     private User user_id;
 }
