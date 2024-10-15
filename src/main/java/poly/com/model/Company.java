@@ -32,8 +32,8 @@ public class Company extends AbstractEntity {
     private String logo;
 
     @OneToOne
-    @JoinColumn(name = "id")
-    private User user_id;
+    @JoinColumn(name = "user_id")
+    private User user;
 
 
 }

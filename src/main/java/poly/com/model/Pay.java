@@ -26,7 +26,7 @@ public class Pay extends AbstractEntity{
     private String paymentType;
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "company_id")
     private Company company_id;
 }
 

@@ -47,11 +47,11 @@ public class JobPost extends AbstractEntity{
     private String city;
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "jobCategory_id")
     private JobCategory jobCategory_id;
 
    @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "company_id")
     private Company company_id;
 
 

@@ -16,7 +16,7 @@ import java.util.Date;
 @NoArgsConstructor
 @Setter
 @Getter
-@Table(name= "user")
+@Table(name= "users")
 public class User extends AbstractEntity{
     @Column(name = "username")
     private String username;

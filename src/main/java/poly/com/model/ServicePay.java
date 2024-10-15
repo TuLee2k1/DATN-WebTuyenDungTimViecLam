@@ -20,7 +20,7 @@ public class ServicePay extends AbstractEntity{
     private Boolean Status;
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "pay_id")
     private Pay pay_id;
 
 }
