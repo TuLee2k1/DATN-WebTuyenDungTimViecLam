@@ -11,11 +11,18 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @ControllerAdvice
 @RestController
 public class CustomResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
-    @ExceptionHandler(CompanyException.class)
 
+    @ExceptionHandler(CompanyException.class)
     public final ResponseEntity<Object> handleCompanyException(CompanyException ex, WebRequest request) {
             CompanyExceptionResponse exceptionResponse = new CompanyExceptionResponse(ex.getMessage());
 
             return new ResponseEntity<>(exceptionResponse, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(JobCategoryException.class)
+    public final ResponseEntity<Object> handleJobCategoryException(JobCategoryException ex, WebRequest request) {
+        JobCategoryExceptionResponse exceptionResponse = new JobCategoryExceptionResponse(ex.getMessage());
+
+        return new ResponseEntity<>(exceptionResponse, HttpStatus.BAD_REQUEST);
     }
 }
