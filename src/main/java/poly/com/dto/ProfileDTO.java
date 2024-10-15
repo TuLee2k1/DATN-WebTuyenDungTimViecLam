@@ -26,7 +26,6 @@ public class ProfileDTO implements Serializable {
     @NotEmpty(message = "sex is require!")
     private String sex;
 
-    @NotEmpty(message = "dateOfBirth is require!")
     @JsonFormat(pattern = "yyyy-MM-dd")
     private Date dateOfBirth;
 }
