@@ -17,6 +17,6 @@ public class UserRole extends AbstractEntity{
     private boolean role;
 
     @OneToOne(orphanRemoval = true)
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "user_id")
     private User user_id;
 }

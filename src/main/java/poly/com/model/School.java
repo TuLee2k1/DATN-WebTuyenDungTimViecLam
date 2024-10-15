@@ -23,7 +23,7 @@ public class School extends AbstractEntity{
     private float GPA;
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "profile_id")
     private Profile profile_id;
 
 

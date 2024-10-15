@@ -1,24 +1,32 @@
 package poly.com.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.Date;
-
+@Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@Setter
+@Getter
+@Table(name= "JobProfile")
 public class JobProfile extends AbstractEntity{
     @Column(name = "fileCV")
     private String fileCV;
 
+    @Temporal(TemporalType.DATE)
     @Column(name = "dateApply")
     private Date dateApply;
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "job_id")
     private JobPost job_id;
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "profile_id")
     private Profile profile_id;
 
 }
