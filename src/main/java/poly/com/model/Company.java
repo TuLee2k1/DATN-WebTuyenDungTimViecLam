@@ -1,17 +1,15 @@
 package poly.com.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
 @Getter
-@Table(name= "company")
+@Table(name = "company")
 public class Company extends AbstractEntity {
     @Column(unique=true, name = "name")
     private String name;

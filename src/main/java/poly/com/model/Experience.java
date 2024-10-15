@@ -30,7 +30,7 @@ public class Experience extends AbstractEntity{
     @Column(name = "endDate")
     private Date endDate;
 
-
-
-
+    @ManyToOne
+    @JoinColumn(name = "profile_id")
+    private Profile profile;
 }
