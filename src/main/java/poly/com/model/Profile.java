@@ -1,18 +1,17 @@
 package poly.com.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.Date;
+
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
-@Setter
 @Getter
-@Table(name= "profile")
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "profiles")
+
 public class Profile extends AbstractEntity{
     @Column(name = "name")
     private String name;
@@ -35,7 +34,5 @@ public class Profile extends AbstractEntity{
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user_id;
-
-
 
 }
