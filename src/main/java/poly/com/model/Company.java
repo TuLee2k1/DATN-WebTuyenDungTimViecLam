@@ -3,6 +3,7 @@ package poly.com.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor

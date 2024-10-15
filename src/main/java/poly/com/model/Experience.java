@@ -33,6 +33,4 @@ public class Experience extends AbstractEntity{
     @ManyToOne
     @JoinColumn(name = "profile_id")
     private Profile profile;
-
-
 }

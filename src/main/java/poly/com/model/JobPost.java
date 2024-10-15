@@ -54,6 +54,4 @@ public class JobPost extends AbstractEntity{
     @JoinColumn(name = "company_id")
     private Company company_id;
 
-
-
 }
