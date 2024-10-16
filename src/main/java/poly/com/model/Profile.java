@@ -1,5 +1,6 @@
 package poly.com.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -29,6 +30,7 @@ public class Profile extends AbstractEntity{
     private String sex;
 
     @Column(name = "dateOfBirth")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date dateOfBirth;
 
     @ManyToOne
