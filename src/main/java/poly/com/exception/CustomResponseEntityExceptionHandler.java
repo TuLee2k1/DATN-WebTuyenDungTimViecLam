@@ -25,4 +25,11 @@ public class CustomResponseEntityExceptionHandler extends ResponseEntityExceptio
 
         return new ResponseEntity<>(exceptionResponse, HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler(JobPostException.class)
+    public final ResponseEntity<Object> handleJobPostException(JobPostException ex, WebRequest request) {
+        JobPostExceptionResponse exceptionResponse = new JobPostExceptionResponse(ex.getMessage());
+
+        return new ResponseEntity<>(exceptionResponse, HttpStatus.BAD_REQUEST);
+    }
 }

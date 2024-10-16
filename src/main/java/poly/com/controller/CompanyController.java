@@ -24,6 +24,7 @@ public class CompanyController {
     @Autowired
     MapValidationErrorService mapValidationErrorService;
 
+
     @PostMapping
     public ResponseEntity<?> createCompany(@Valid @RequestBody CompanyDto dto,
                                            BindingResult result) {
