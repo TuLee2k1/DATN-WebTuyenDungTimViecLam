@@ -1,11 +1,17 @@
 package poly.com.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.persistence.*;
+import lombok.*;
 
-import java.util.Date;
+import java.time.LocalDate;
 
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Table(name = "schools")
 public class School extends AbstractEntity{
     @Column(name = "schoolName")
     private String schoolName;
@@ -13,11 +19,13 @@ public class School extends AbstractEntity{
     @Column(name = "degree")
     private String degree;
 
+    @JsonFormat(pattern = "dd-MM-yyyy")
     @Column(name = "startDate")
-    private Date startDate;
+    private LocalDate startDate;
 
+    @JsonFormat(pattern = "dd-MM-yyyy")
     @Column(name = "endDate")
-    private Date endDate;
+    private LocalDate endDate;
 
     @Column(name = "GPA")
     private float GPA;
@@ -25,6 +33,5 @@ public class School extends AbstractEntity{
     @ManyToOne
     @JoinColumn(name = "profile_id")
     private Profile profile_id;
-
 
 }

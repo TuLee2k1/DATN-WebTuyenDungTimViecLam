@@ -1,5 +1,6 @@
 package poly.com.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -24,6 +25,7 @@ public class Staff extends AbstractEntity {
     @Column(name = "address")
     private String address;
 
+    @JsonFormat(pattern = "dd-MM-yyyy")
     @Column(name = "dob")
     private LocalDate dob;
 
