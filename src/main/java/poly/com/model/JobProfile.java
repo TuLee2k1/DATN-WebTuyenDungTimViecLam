@@ -14,9 +14,11 @@ import java.util.Date;
 @Getter
 @Table(name= "jobProfiles")
 public class JobProfile extends AbstractEntity {
+
     @Column(name = "fileCV")
     private String fileCV;
 
+    @Temporal(TemporalType.DATE)
     @Column(name = "dateApply")
     private Date dateApply;
 
