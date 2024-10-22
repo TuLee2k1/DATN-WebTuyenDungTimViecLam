@@ -26,7 +26,7 @@ public class Company extends AbstractEntity {
     @Column(name = "tax_code")
     private String tax_code;
 
-    @Column(name = "logo")
+    @Column(name = "logo", length = 100)
     private String logo;
 
     @OneToOne

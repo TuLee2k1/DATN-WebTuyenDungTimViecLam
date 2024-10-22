@@ -7,16 +7,23 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import poly.com.dto.CompanyDto;
 import poly.com.model.Company;
 import poly.com.service.CompanyService;
+import poly.com.service.FileStorageService;
 import poly.com.service.MapValidationErrorService;
+
+import java.io.File;
+import java.io.IOException;
 
 @RestController
 @RequestMapping("/api/v1/company")
+@CrossOrigin
 public class CompanyController {
     @Autowired
     CompanyService companyService;
@@ -24,8 +31,16 @@ public class CompanyController {
     @Autowired
     MapValidationErrorService mapValidationErrorService;
 
-    @PostMapping
-    public ResponseEntity<?> createCompany(@Valid @RequestBody CompanyDto dto,
+    @Autowired
+    private FileStorageService fileStorageService;
+
+
+
+    @PostMapping(consumes = {MediaType.APPLICATION_JSON_VALUE,
+            MediaType.APPLICATION_FORM_URLENCODED_VALUE,
+            MediaType.MULTIPART_FORM_DATA_VALUE},
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> createCompany(@Valid @ModelAttribute CompanyDto dto,
                                            BindingResult result) {
 
         ResponseEntity<?> responseEntity= mapValidationErrorService.mapValidationFields(result) ;
@@ -34,13 +49,20 @@ public class CompanyController {
             return responseEntity;
         }
 
-        Company entity = new Company();
-        BeanUtils.copyProperties(dto, entity);
-
-        entity = companyService.save(entity);
+        Company entity = companyService.save(dto);
         dto.setId(entity.getId());
-        return new ResponseEntity<>(dto, HttpStatus.CREATED);
+        dto.setName(entity.getName());
+        dto.setAddress(entity.getAddress());
+        dto.setPhone(entity.getPhone());
+        dto.setEmail(entity.getEmail());
+        dto.setTax_code(entity.getTax_code());
+        dto.setLogo(entity.getLogo());
+
+
+        return new ResponseEntity<>(entity, HttpStatus.CREATED);
+//
     }
+
 
 
     @PatchMapping("/{id}")
