@@ -1,5 +1,7 @@
 package poly.com.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,7 +12,7 @@ import poly.com.model.Staff;
 import poly.com.service.StaffService;
 
 import java.util.List;
-
+@Tag(name = "Staff Controller")
 @RestController
 @RequestMapping("/staff")
 public class StaffController {
@@ -31,6 +33,7 @@ public class StaffController {
      * @update:
      *
      * */
+    @Operation(summary = "Get All Staff", description = "API get all Staff")
     @GetMapping
     public List<Staff> getAllStaff() {
         return staffService.getAllStaff();
@@ -43,6 +46,7 @@ public class StaffController {
      * @update:
      *
      * */
+    @Operation(summary = "Get Staff with ID", description = "API get Staff with ID")
     @GetMapping("/{id}")
     ApiResponse<Staff>  getStaffById(@PathVariable Long id) {
         try {
@@ -65,6 +69,7 @@ public class StaffController {
      * @update:
      *
      * */
+    @Operation(summary = "Add new Staff", description = "API create new Staff")
     @PostMapping("/save")
     ApiResponse<Staff>  saveStaff(@Valid @RequestBody StaffDto staffDto) {
         try
@@ -87,6 +92,7 @@ public class StaffController {
      * @update:
      *
      * */
+    @Operation(summary = "Update Staff", description = "API Update Staff")
     @PatchMapping("/{id}")
     ApiResponse<Staff>  updateStaff(@PathVariable Long id, @Valid @RequestBody StaffDto staffDto) {
         try {
@@ -109,6 +115,7 @@ public class StaffController {
      * @update:
      *
      * */
+    @Operation(summary = "Delete Staff", description = "API delete Staff")
     @DeleteMapping("/{id}")
     public ApiResponse<Void> deleteStaff(@PathVariable Long id) {
         ApiResponse<Void> apiResponse = new ApiResponse<>();

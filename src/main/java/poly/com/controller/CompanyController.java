@@ -1,5 +1,7 @@
 package poly.com.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +22,7 @@ import poly.com.service.MapValidationErrorService;
 
 import java.io.File;
 import java.io.IOException;
-
+@Tag(name = "Company Controller")
 @RestController
 @RequestMapping("/api/v1/company")
 @CrossOrigin
@@ -35,7 +37,7 @@ public class CompanyController {
     private FileStorageService fileStorageService;
 
 
-
+    @Operation(summary = "Add new Company", description = "API add new company")
     @PostMapping(consumes = {MediaType.APPLICATION_JSON_VALUE,
             MediaType.APPLICATION_FORM_URLENCODED_VALUE,
             MediaType.MULTIPART_FORM_DATA_VALUE},
@@ -64,7 +66,7 @@ public class CompanyController {
     }
 
 
-
+    @Operation(summary = "Update Company", description = "API update company")
     @PatchMapping("/{id}")
     public ResponseEntity<?> updateCompany(@PathVariable("id")Long id,
                                            @RequestBody CompanyDto dto) {
@@ -78,12 +80,13 @@ public class CompanyController {
         return new ResponseEntity<>(dto, HttpStatus.CREATED);
     }
 
-
+    @Operation(summary = "Get All Company", description = "API get all company")
     @GetMapping()
     public ResponseEntity<?> getCompany(){
         return new ResponseEntity<>(companyService.findAll(), HttpStatus.OK);
     }
 
+    @Operation(summary = "Get all Pageable Company", description = "API get all pageable company")
     @GetMapping("/page")
     public ResponseEntity<?> getCompany(
             @PageableDefault(size = 5, sort = "name", direction = Sort.Direction.ASC)
@@ -92,6 +95,7 @@ public class CompanyController {
         return new ResponseEntity<>(companyService.findAll(pageable), HttpStatus.OK);
     }
 
+    @Operation(summary = "Get Company with ID", description = "API get company with id")
     @GetMapping("/{id}/get")
     public ResponseEntity<?> getCompany(@PathVariable("id")Long id){
 
@@ -99,7 +103,7 @@ public class CompanyController {
     }
 
 
-
+    @Operation(summary = "Delete Company", description = "API delete company")
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteCompany(@PathVariable("id")Long id){
         companyService.deleteById(id);
