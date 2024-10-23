@@ -1,7 +1,5 @@
 package poly.com.controller;
 
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -14,9 +12,8 @@ import poly.com.dto.response.StaffResponse;
 import poly.com.exception.ApiResponse;
 import poly.com.service.StaffService;
 
-import java.util.List;
+import java.util.stream.Collectors;
 
-@Tag(name = "Staff Controller")
 @RestController
 @RequestMapping("/staff")
 @RequiredArgsConstructor
@@ -24,36 +21,13 @@ public class StaffController {
 
     private final StaffService staffService;
 
-
-    @Autowired
-    public StaffController(StaffService staffService, ApiResponse<Staff> apiResponse) {
-        this.staffService = staffService;
-        this.apiResponse = apiResponse;
-    }
-
-    /*
-     * @author: VuDD
-     * @since: 10/15/2024 2:47 PM
-     * @description:  Lấy danh sách tất cả nhân viên
-     * @update:
-     *
-     * */
-    @Operation(summary = "Get All Staff", description = "API get all Staff")
     @GetMapping
     public ApiResponse<Page<StaffResponse>> getAllStaff(
     @RequestParam(name = "pageNo", defaultValue = "1") Integer pageNo) {
-       // Page<StaffResponse> staffPage = this.staffService.getAllStaff(pageNo);
+        // Page<StaffResponse> staffPage = this.staffService.getAllStaff(pageNo);
         return ApiResponse.<Page<StaffResponse>>builder().Result(staffService.getAllStaff(pageNo)).build();
     }
 
-    /*
-     * @author: VuDD
-     * @since: 10/15/2024 2:47 PM
-     * @description:  Lấy thông tin nhân viên theo id
-     * @update:
-     *
-     * */
-    @Operation(summary = "Get Staff with ID", description = "API get Staff with ID")
     @GetMapping("/{id}")
     public ApiResponse<StaffResponse> getStaffById(@PathVariable Long id) {
 
@@ -73,14 +47,6 @@ public class StaffController {
         , pageNo)).message("Tim tên nhân viên "+keyword).build();
     }
 
-    /*
-     * @author: VuDD
-     * @since: 10/15/2024 2:48 PM
-     * @description:  Tạo mới nhân viên
-     * @update:
-     *
-     * */
-    @Operation(summary = "Add new Staff", description = "API create new Staff")
     @PostMapping("/save")
     public ApiResponse<StaffResponse> saveStaff(@Valid @RequestBody StaffDto staffDto, BindingResult result) {
         // Kiểm tra lỗi xác thực đầu vào
@@ -105,14 +71,6 @@ public class StaffController {
         }
     }
 
-    /*
-     * @author: VuDD
-     * @since: 10/15/2024 2:48 PM
-     * @description:  Cập nhật thông tin nhân viên
-     * @update:
-     *
-     * */
-    @Operation(summary = "Update Staff", description = "API Update Staff")
     @PatchMapping("/{id}")
     public ApiResponse<StaffResponse> updateStaff(@PathVariable Long id, @Valid @RequestBody StaffDto staffDto) {
         try {
@@ -124,15 +82,6 @@ public class StaffController {
         }
     }
 
-
-    /*
-     * @author: VuDD
-     * @since: 10/15/2024 2:48 PM
-     * @description:  Xóa nhân viên
-     * @update:
-     *
-     * */
-    @Operation(summary = "Delete Staff", description = "API delete Staff")
     @DeleteMapping("/{id}")
     public ApiResponse<String> deleteStaff(@PathVariable Long id) {
         try {
