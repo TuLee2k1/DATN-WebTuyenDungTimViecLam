@@ -1,10 +1,14 @@
 package poly.com.exception;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import lombok.Builder;
+import lombok.Data;
 import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Component;
 
 @Component
+@Builder
+@Data
 @FieldDefaults(level = lombok.AccessLevel.PRIVATE)
 @JsonPropertyOrder({"status", "message", "Result"})
 public class ApiResponse<T> {
