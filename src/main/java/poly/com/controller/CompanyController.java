@@ -110,4 +110,12 @@ public class CompanyController {
 
         return new ResponseEntity<>("Company with Id " + id + " was deleted", HttpStatus.OK);
     }
+
+    @DeleteMapping("/images/{fileName:.+}")
+    public ResponseEntity<?> deleteLogoCompany(@PathVariable String fileName){
+
+        fileStorageService.deleteCompanyImageFile(fileName);
+
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }
