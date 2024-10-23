@@ -11,10 +11,15 @@ import lombok.Setter;
 @NoArgsConstructor
 @Setter
 @Getter
-@Table(name= "UserRole")
-public class UserRole extends AbstractEntity{
+@Table(name = "UserRole")
+public class UserRole {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     @Column(name = "role")
     private boolean role;
+
 
     @OneToOne(orphanRemoval = true)
     @JoinColumn(name = "user_id")
